@@ -4,10 +4,11 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './components/forms/Login';
 import HomePage from './components/forms/HomePage';
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 function App() {
   const navigate = useNavigate()
   useEffect(() => {
-    let token = localStorage.getItem('dataKey')
+    let token = Cookies.get('dataKey')
     if (!token) {
       navigate('/login')
     }

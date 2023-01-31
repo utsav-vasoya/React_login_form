@@ -4,6 +4,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import validator from 'validator'
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function Login() {
 
@@ -37,8 +38,7 @@ function Login() {
                     setTimeout(() => {
                         window.location = "/home";
                     }, 1000)
-                    localStorage.setItem('dataKey', JSON.stringify(res.data));
-                    // navigate("/home")
+                    Cookies.setItem('dataKey',JSON.stringify(res.data));
                 }
             }).catch((err) => {
                 console.log(err);
@@ -46,25 +46,9 @@ function Login() {
             setLogin({ email: "", password: "" })
         }
     }
-    const googleClick = () => {
-        axios.get("http://localhost:4000/users/auth/google").then((res) => {
-            if (res.data.msg) {
-                toast.error(res.data.msg, {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            } else {
-                toast.success("Login Successfull.", {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-                setTimeout(() => {
-                    window.location = "/home";
-                }, 1000)
-                localStorage.setItem('dataKey', JSON.stringify(res.data));
-                // navigate("/home")
-            }
-        }).catch((err) => {
-            console.log(err);
-        });
+    const googleClick = (e) => {
+        e.preventDefault();
+        window.location.href = 'http://localhost:4000/users/auth/google'
     }
     return (
         <>
