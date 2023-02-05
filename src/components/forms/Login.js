@@ -38,7 +38,7 @@ function Login() {
                     setTimeout(() => {
                         window.location = "/home";
                     }, 1000)
-                    Cookies.setItem('dataKey',JSON.stringify(res.data));
+                    Cookies.set('name', res.data.name);
                 }
             }).catch((err) => {
                 console.log(err);

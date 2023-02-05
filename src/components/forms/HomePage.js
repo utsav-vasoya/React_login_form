@@ -4,6 +4,7 @@ import image2 from './tablesetting2.jpg'
 import image3 from './tablesetting.jpg'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie'
 function HomePage() {
     const [data, setData] = useState("");
     const logout = (e) => {
@@ -17,21 +18,8 @@ function HomePage() {
         })
     }
 
-    // useEffect(() => {
-    //     if (window.location.pathname === '/home') {
-    //         // toast.success("Login Successfull...", {
-    //         //     position: toast.POSITION.TOP_RIGHT
-    //         // })
-    //     } else{
-    //         toast.success("Login Successfull...", {
-    //             position: toast.POSITION.TOP_RIGHT
-    //         })
-    //     }
-    // }, [window.location.pathname])
-    
-
     useEffect(() => {
-        var name = JSON.parse(localStorage.getItem("dataKey"))
+        var name = Cookies.get("name")
         setData(name)
     }, [])
     return (

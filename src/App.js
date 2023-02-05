@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 function App() {
   const navigate = useNavigate()
   useEffect(() => {
-    let token = Cookies.get('dataKey')
+    let token = Cookies.get('name')
     if (!token) {
       navigate('/login')
     }
